@@ -1,0 +1,22 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div id="output" class="oput">Nothing</div>
+<button type="button" id="mybtn">click me</button>
+
+<script>
+var myContainer="";
+document.getElementById("mybtn").addEventListener("click",myfunc);
+function myfunc(){
+var xhttp=new XMLHttpRequest();
+xhttp.onreadystatechange=function(){
+if(xhttp.readyState==4 && xhttp.status==200) {
+    console.log(this.responseText);
+}
+}
+xhttp.open("GET","data1.txt",true);
+xhttp.send();
+}
+</script>
+</head>
+</html>
