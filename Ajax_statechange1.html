@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Ajax</title>
+</head>
+<body>
+<h1>Learn Ajax</h1>
+<div id="output"></div>
+<button id="loadNew">Load</button> 
+<script type="text/javascript">
+var data=document.getElementById('output')
+var buttonclick=document.getElementById('loadNew')
+buttonclick.addEventListener('click',function(){
+    loadAjax();
+})
+ function loadAjax(){
+     var xhttp=new XMLHttpRequest();
+     xhttp.onreadystatechange=function(){
+         if(xhttp.readyState==4 && xhttp.status==200) {
+var json=JSON.parse(xhttp.responseText);
+var data=json.results[0];
+
+var message='<h2>' + data.name.first + data.name.last + '</h2><img src="'+ data.picture.large + '">'
+ output.innerHTML=message;
+         }
+     }
+     xhttp.open('GET','https://randomuser.me/api/',true);
+     xhttp.send();
+};
+</script>
+</body>
+</html>
